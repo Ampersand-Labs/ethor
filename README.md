@@ -3,8 +3,8 @@
 Gem for consuming the Ethor API
 
 Currently working:
-# GET stores
-# Create ticket
+* get stores list
+* Create ticket
 
 
 ## Installation
