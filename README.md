@@ -1,6 +1,11 @@
 # EthorApi
 
-TODO: Write a gem description
+Gem for consuming the Ethor API
+
+Currently working:
+# GET stores
+# Create ticket
+
 
 ## Installation
 
@@ -20,11 +25,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Checkout the rspec tests for better documentation
+
+### Examples
+```ruby
+  @service = EthorApi::Client.new :sandbox, api_key, consumer_secret
+  
+  @service.store.all # lists all stores
+
+  @service.ticket.create "HI6PIDO5JS", { body: {order_type: 'dine_in'}} # create ticket
+
+```
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/ethor_api/fork )
+1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
