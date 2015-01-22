@@ -29,7 +29,7 @@ Checkout the rspec tests for better documentation
 
 ### Examples
 ```ruby
-  @service = EthorApi::Client.new :sandbox, api_key, consumer_secret
+  @service = EthorApi::Client.new :sandbox, api_key, consumer_secret # :sandbox or :live
   
   @service.store.all # lists all stores
 
