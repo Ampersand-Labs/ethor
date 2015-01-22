@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = EthorApi::VERSION
   spec.authors       = ["KevinColemanInc"]
   spec.email         = ["kevin.coleman@sparkstart.io"]
-  spec.summary       = %q{TODO: Ethor Gem for their api.}
+  spec.summary       = %q{Ethor Gem for their api.}
   spec.homepage      = "https://github.com/Ampersand-Labs/ethor"
   spec.license       = "MIT"
 
@@ -19,4 +19,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.add_runtime_dependency "faraday"
+  spec.add_runtime_dependency "faraday_middleware"
+
 end
