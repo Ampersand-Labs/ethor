@@ -59,7 +59,9 @@ module EthorApi
       params  = options[:params] || {}
       body    = options[:body]
       headers = options[:headers]
-
+      puts
+      puts url
+      puts '*(*(*'
       @connection.send(method) do |req|
         req.url(url)
         req.params.merge!(params)
