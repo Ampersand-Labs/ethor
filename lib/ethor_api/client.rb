@@ -36,6 +36,10 @@ module EthorApi
       EthorApi::Api::Ticket.new(self)
     end
 
+    def menu
+      EthorApi::Api::Menu.new(self)
+    end
+
     def get(path, options = {})
       request(:get, parse_query_and_convenience_headers(path, options))
     end
@@ -59,15 +63,14 @@ module EthorApi
       params  = options[:params] || {}
       body    = options[:body]
       headers = options[:headers]
-      puts
-      puts url
-      puts '*(*(*'
+
       @connection.send(method) do |req|
         req.url(url)
         req.params.merge!(params)
         req.body = body.to_json
         req.headers['Content-Type'] = 'application/json'
       end
+    
     end
   end
 end

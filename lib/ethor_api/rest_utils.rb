@@ -4,7 +4,7 @@ module EthorApi::Api::RestUtils
 
     DEFAULT_SERVERS = {
         :sandbox => 'ethor-test.apigee.net/v1',
-        :live => 'ethor-live.apigee.net/v1'
+        :live => 'ethor-prod.apigee.net/v1/'
       }
 
     def connection(server)

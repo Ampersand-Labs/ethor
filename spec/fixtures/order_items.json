@@ -1,0 +1,18 @@
+{
+  "order_items": [
+    {
+      "menu_item_id": "VD1PIEBIIG",
+      "menu_item_name": "Create Your Own",
+      "modifiers": [
+        {
+          "modifier_id": "6HEK9TXSBQ",
+          "modifier_name": "Shrimp"
+        }
+      ],
+      "quantity": "2",
+      "total": 31.98,
+      "variant_id": "TXDOR7S83E",
+      "variant_name": "X-Lg 18\""
+    }
+  ]
+}
