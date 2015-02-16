@@ -26,17 +26,13 @@ describe "EthorApi::Api::Ticket" do
     ticket = @service.ticket.submit @store_id, @ticket["ticket"]["order_id"], {body: customer}
 
     ticket = @service.ticket.find @store_id, @ticket["ticket"]["order_id"]
-    puts
-    puts ticket.to_json
-    puts 
-
     expect(ticket).to be
     expect(ticket["ticket"]["order_type"]).to eq 'dine_in'
   end
 
   it "finds a ticket" do
-    expect(ticket).to be
-    expect(ticket["ticket"]["order_type"]).to eq 'dine_in'
-    expect(ticket["ticket"]["order_id"]).to be
+    expect(@ticket).to be
+    expect(@ticket["ticket"]["order_type"]).to eq 'dine_in'
+    expect(@ticket["ticket"]["order_id"]).to be
   end
 end
