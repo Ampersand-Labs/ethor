@@ -17,6 +17,11 @@ module EthorApi
       def add_items store_id, order_id, params={}
         @client.post("/stores/#{store_id}/tickets/#{order_id}/items", params).body
       end
+
+      def add_payments store_id, order_id, params={}
+        @client.post("/stores/#{store_id}/tickets/#{order_id}/payments", params).body
+      end 
+
     end
   end
 end

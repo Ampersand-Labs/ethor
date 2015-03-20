@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "EthorApi::Api::Ticket" do
   before(:each) do
-    @store_id = "HI6PIDO5JS"
-    @menu_item_id = "VD1PIEBIIG"
+    @store_id = "0TE00X5718"
+    @menu_item_id = "O4D00LJTMK"
     @service = EthorApi::Client.new :sandbox, ENV['PS_ETHOR_API_KEY'], double
   end
 

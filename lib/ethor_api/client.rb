@@ -70,7 +70,6 @@ module EthorApi
         req.body = body.to_json
         req.headers['Content-Type'] = 'application/json'
       end
-    
     end
   end
 end
