@@ -6,7 +6,7 @@ module EthorApi
     API_VERSION = 'v1'
     DEFAULT_SERVERS = {
         :sandbox => 'https://ethor-test.apigee.net',
-        :live => 'https://ethor-live.apigee.net'
+        :live => 'https://ethor-prod.apigee.net'
       }
 
     attr_reader :consumer_key, :consumer_secret, :server, :connection
