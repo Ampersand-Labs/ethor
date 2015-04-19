@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "EthorApi::Api::Store" do
   before(:each) do
-    @service = EthorApi::Client.new :sandbox, ENV['PS_ETHOR_API_KEY'], double
+    @service = EthorApi::Client.new ENV['PS_ETHOR_VERSION'].to_sym, ENV['PS_ETHOR_API_KEY'], double
   end
 
   it "gets a list of stores" do

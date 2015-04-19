@@ -48,6 +48,10 @@ module EthorApi
       request(:post, parse_query_and_convenience_headers(path, options))
     end
 
+    def delete(path, options = {})
+      request(:delete, parse_query_and_convenience_headers(path, options))
+    end
+
     private
 
     def parse_query_and_convenience_headers(path, options)

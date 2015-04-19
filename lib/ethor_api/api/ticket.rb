@@ -22,6 +22,10 @@ module EthorApi
         @client.post("/stores/#{store_id}/tickets/#{order_id}/payments", params).body
       end 
 
+      def void store_id, order_id, params={}
+        @client.delete("/stores/#{store_id}/tickets/#{order_id}", params).body
+      end 
+
     end
   end
 end

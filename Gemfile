@@ -8,6 +8,7 @@ end
 
 group :development, :test do
   gem "rake"
+  gem "pry"
 end
 
 group :test do

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "EthorApi::Api::Ticket" do
   before(:each) do
-    @store_id = "0TE00X5718"
-    @service = EthorApi::Client.new :sandbox, ENV['PS_ETHOR_API_KEY'], double
+    @store_id = ENV['PS_ETHOR_STORE_ID']
+    @service = EthorApi::Client.new ENV['PS_ETHOR_VERSION'].to_sym, ENV['PS_ETHOR_API_KEY'], double
     @ticket = @service.ticket.create @store_id, { body: {order_type: 'dine_in'}}
   end
 
@@ -32,7 +32,24 @@ describe "EthorApi::Api::Ticket" do
   end
 
 
-  it "adds a payment to a submitted ticket" do
+  it "deletes a non submitted ticket" do
+    ticket = @service.ticket.void @store_id, @ticket["ticket"]["order_id"]
+    expect(ticket).to be
+    expect(ticket["ticket"]["order_status"]).to eq "DELETED"
+  end
+
+  it "deletes a non submitted ticket" do
+    order_items = JSON.parse(File.read((File.expand_path '../..', __FILE__) + "/fixtures/order_items.json"))
+    ticket = @service.ticket.add_items @store_id, @ticket["ticket"]["order_id"], {body: order_items}
+
+    customer = JSON.parse(File.read((File.expand_path '../..', __FILE__) + "/fixtures/customer.json"))
+    ticket = @service.ticket.submit @store_id, @ticket["ticket"]["order_id"], {body: customer}
+    
+    ticket = @service.ticket.void @store_id, @ticket["ticket"]["order_id"]
+    expect(ticket["ticket"]["order_status"]).to eq "DELETED"
+  end
+
+  it "adds a payment to a ticket" do
     order_items = JSON.parse(File.read((File.expand_path '../..', __FILE__) + "/fixtures/order_items.json"))
     ticket = @service.ticket.add_items @store_id, @ticket["ticket"]["order_id"], {body: order_items}
 
