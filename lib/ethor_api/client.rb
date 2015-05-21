@@ -16,7 +16,7 @@ module EthorApi
         @consumer_secret = consumer_secret
         @server = DEFAULT_SERVERS[server]
 
-        @connection = Faraday.new({ url: @server, ssl: { verify: true } }) do |builder|
+        @connection = Faraday.new({ url: @server, ssl: { verify: true }, request: {timeout: 60} }) do |builder|
           # response
           builder.use Faraday::Response::RaiseError
           builder.response :json
