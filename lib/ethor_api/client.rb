@@ -16,7 +16,7 @@ module EthorApi
         @consumer_secret = consumer_secret
         @server = DEFAULT_SERVERS[server]
 
-        @connection = Faraday.new({ url: @server, ssl: { verify: true }, request: {timeout: 60} }) do |builder|
+        @connection = Faraday.new({ url: @server, ssl: { verify: true }, request: {} }) do |builder|
           # response
           builder.use Faraday::Response::RaiseError
           builder.response :json
@@ -59,6 +59,7 @@ module EthorApi
       opts = { body: options[:body] }
       opts[:url]    = path
       opts[:method] = options[:method] || :get
+      opts[:timeout] = options[:timeout] || 20
       opts.tap {|p| p[:params] = (options[:params] || {}).merge({ apikey: @consumer_key }) }
     end
 
@@ -67,11 +68,13 @@ module EthorApi
       params  = options[:params] || {}
       body    = options[:body]
       headers = options[:headers]
-
+      timeout = options[:timeout] || 20
+      
       @connection.send(method) do |req|
         req.url(url)
         req.params.merge!(params)
         req.body = body.to_json
+        req.options.timeout = timeout
         req.headers['Content-Type'] = 'application/json'
       end
     end
