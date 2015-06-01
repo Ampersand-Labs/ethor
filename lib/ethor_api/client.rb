@@ -66,14 +66,14 @@ module EthorApi
     def request(method, options = {})
       url     = "/#{API_VERSION}/" + options.fetch(:url)
       params  = options[:params] || {}
-      body    = options[:body]
+      body    = options[:body].nil? ? nil : options[:body]
       headers = options[:headers]
       timeout = options[:timeout] || 20
       
       @connection.send(method) do |req|
         req.url(url)
         req.params.merge!(params)
-        req.body = body.to_json
+        req.body = body.nil? ? nil : body.to_json
         req.options.timeout = timeout
         req.headers['Content-Type'] = 'application/json'
       end
